@@ -32,6 +32,7 @@ const INITIAL_STATE = {
   email: '',
   passwordOne: '',
   passwordTwo: '',
+  Location: '',
   error: null,
 };
 
@@ -51,6 +52,7 @@ class SignUpForm extends Component {
       username,
       email,
       passwordOne,
+      Location,
     } = this.state;
         const {
       history,
@@ -59,7 +61,7 @@ class SignUpForm extends Component {
     auth.doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
                 // Create a user in your own accessible Firebase Database too
-        db.doCreateUser(authUser.uid, username, email)
+        db.doCreateUser(authUser.uid, username, email, Location)
           .then(() => {
             this.setState(() => ({ ...INITIAL_STATE }));
             history.push(routes.HOME);
@@ -82,39 +84,56 @@ class SignUpForm extends Component {
       email,
       passwordOne,
       passwordTwo,
+      Location,
       error,
     } = this.state;
         const isInvalid =
       passwordOne !== passwordTwo ||
       passwordOne === '' ||
       email === '' ||
+      Location === '' ||
       username === '';
     return (
       <form onSubmit={this.onSubmit}>
-              <input
+      <div>
+        <label>Full Name   </label>
+          <input
           value={username}
           onChange={event => this.setState(byPropKey('username', event.target.value))}
           type="text"
           placeholder="Full Name"
-        />
+        /><br/>
+        <label>Email   </label>
         <input
           value={email}
           onChange={event => this.setState(byPropKey('email', event.target.value))}
           type="text"
           placeholder="Email Address"
-        />
+        /><br/>
+        <label>Password   </label>
         <input
           value={passwordOne}
           onChange={event => this.setState(byPropKey('passwordOne', event.target.value))}
           type="password"
           placeholder="Password"
-        />
+        /><br/>
+        <label>Re-enter password   </label>
         <input
           value={passwordTwo}
           onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))}
           type="password"
           placeholder="Confirm Password"
-        />
+        /><br/>
+        <label>Location  </label>
+          <input 
+          value={Location}
+          onChange={event => this.setState(byPropKey('Location', event.target.value))}
+          type="text"
+          placeholder="Location"
+          /><br/>
+          </div>
+          <progress value="0" max="100" id="progressBar"></progress>
+        <input type="file" value="upload" id="filebutton"/>
         <button type="submit">
         <button disabled={isInvalid} type="submit">
           Sign Up
