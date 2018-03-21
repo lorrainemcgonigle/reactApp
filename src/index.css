@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.LandingHeader{
+	text-align: center;
+	background-color: lightPink;
+	color: white;
+	padding: 20px;
+	height: 400px;
+	background-image: url(back.jpg);
+	background-position:center;
+	background-size: cover;
+}
+.navbar{
+	background-color: lightpink;
+	color: white;
+	height: 40px;
+}
