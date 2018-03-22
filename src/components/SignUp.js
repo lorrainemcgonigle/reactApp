@@ -23,7 +23,7 @@ import * as routes from '../constants/routes';
 
 const SignUpPage = ({ history }) =>
   <div>
-    <h1>SignUp</h1>
+    <h1>Register</h1>
         <SignUpForm history={history} />
   </div>
 
@@ -134,7 +134,7 @@ class SignUpForm extends Component {
           placeholder="Location"
           /><br/>
         <br/>
-        <button className = "btn-md" disabled={isInvalid} type="submit">
+        <button className = "btn" disabled={isInvalid} type="submit">
           Sign Up
         </button>
         </div>

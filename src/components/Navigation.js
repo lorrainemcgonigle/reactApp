@@ -25,8 +25,8 @@ const NavigationAuth = () =>
   </ul>
 
 const NavigationNonAuth = () =>
-  <ul>
-    <li><Link to={routes.SIGN_IN}>Sign In</Link></li>
+  <ul className = "navbarOption">
+    <Link to={routes.SIGN_IN} id = "Link">Sign In</Link>
   </ul>
 
 export default Navigation;

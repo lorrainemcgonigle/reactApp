@@ -3,6 +3,16 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+h1{
+	text-align: center;
+	color: purple;
+}
+#LandingHeader{
+	color: white;
+	font-weight: bolder;
+	font-size: 6em;
+	font-family: 'Dancing Script', cursive;
+}
 .LandingHeader{
 	text-align: center;
 	background-color: lightPink;
@@ -22,11 +32,19 @@ body {
 	background-image: url(back.jpg);
 	background-position: center;
 	background-size: cover;
-	opacity: 0.2;
-	height: 700px;
+	opacity: 0.4;
+	height: auto;
 	
 }
-div.signUpFormDetails{
+.signInForm{
+	background-image: url(back.jpg);
+	background-position: center;
+	background-size: cover;
+	opacity: 0.4;
+	height: auto;
+	
+}
+div.signUpFormDetails, div.signInFormDetails{
 	margin: 30px;
 	margin-top: 10px;
 	padding: 15px;
@@ -41,9 +59,43 @@ div.signUpFormDetails{
     display: inline-block;
 
 }
-.formWrap{
+.formWrap, .signInWrap{
 	display: block;
 	text-align: center;
+
+}
+.navbarOption{
+	padding: 10px;
+	float: right;
+}
+#link{
+	color: purple;
+}
+.btn {
+  background: #8f1b72;
+  background-image: -webkit-linear-gradient(top, #8f1b72, #782bb8);
+  background-image: -moz-linear-gradient(top, #8f1b72, #782bb8);
+  background-image: -ms-linear-gradient(top, #8f1b72, #782bb8);
+  background-image: -o-linear-gradient(top, #8f1b72, #782bb8);
+  background-image: linear-gradient(to bottom, #8f1b72, #782bb8);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Georgia;
+  color: #ebdfe4;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #db34bf;
+  background-image: -webkit-linear-gradient(top, #db34bf, #dc56de);
+  background-image: -moz-linear-gradient(top, #db34bf, #dc56de);
+  background-image: -ms-linear-gradient(top, #db34bf, #dc56de);
+  background-image: -o-linear-gradient(top, #db34bf, #dc56de);
+  background-image: linear-gradient(to bottom, #db34bf, #dc56de);
+  text-decoration: none;
 }
 
 

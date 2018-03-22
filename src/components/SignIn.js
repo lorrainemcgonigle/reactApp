@@ -10,10 +10,9 @@ import * as routes from '../constants/routes';
 
 const SignInPage = ({ history }) =>
   <div>
-    <h1>SignIn</h1>
+    <h1>Sign In</h1>
     <SignInForm history={history} />
-    <PasswordForgetLink />
-    <SignUpLink />
+
   </div>
 
 const byPropKey = (propertyName, value) => () => ({
@@ -67,25 +66,34 @@ class SignInForm extends Component {
       email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+    <div className = "signInWrap">
+      <form className = "signInForm" onSubmit={this.onSubmit}>
+      <div className = "signInFormDetails">
+      <label>Enter you email:</label><br/>
         <input
           value={email}
           onChange={event => this.setState(byPropKey('email', event.target.value))}
           type="text"
           placeholder="Email Address"
-        />
+        /><br/>
+        <label>Enter password</label><br/>
         <input
           value={password}
           onChange={event => this.setState(byPropKey('password', event.target.value))}
           type="password"
           placeholder="Password"
-        />
-        <button disabled={isInvalid} type="submit">
+        /><br/>
+        <br/>
+        <button className = "btn" disabled={isInvalid} type="submit">
           Sign In
         </button>
-
+        <br/>
+            <PasswordForgetLink />
+            <SignUpLink />
         { error && <p>{error.message}</p> }
+        </div>
       </form>
+      </div>
     );
   }
 }
