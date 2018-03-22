@@ -94,54 +94,55 @@ class SignUpForm extends Component {
       Location === '' ||
       username === '';
     return (
-      <form onSubmit={this.onSubmit}>
-      <div>
-        <label>Full Name   </label>
-          <input
+    <div className = "formWrap">
+      <form className = "signUpForm" onSubmit={this.onSubmit}>
+      <div className = "signUpFormDetails">
+        <label>Enter Full Name</label><br/>
+          <input className = "input-xlarge"
           value={username}
           onChange={event => this.setState(byPropKey('username', event.target.value))}
           type="text"
           placeholder="Full Name"
-        /><br/>
-        <label>Email   </label>
+          /><br/>
+        <label>Enter Email Address</label><br/>
         <input
           value={email}
           onChange={event => this.setState(byPropKey('email', event.target.value))}
           type="text"
           placeholder="Email Address"
         /><br/>
-        <label>Password   </label>
+        <label>Password   </label><br/>
         <input
           value={passwordOne}
           onChange={event => this.setState(byPropKey('passwordOne', event.target.value))}
           type="password"
           placeholder="Password"
         /><br/>
-        <label>Re-enter password   </label>
+        <p className = "form-text text-muted">Password must be longer than 6 characters</p>
+        <label>Re-enter password   </label><br/>
         <input
           value={passwordTwo}
           onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))}
           type="password"
           placeholder="Confirm Password"
         /><br/>
-        <label>Location  </label>
+        <label>Location  </label><br/>
           <input 
           value={Location}
           onChange={event => this.setState(byPropKey('Location', event.target.value))}
           type="text"
           placeholder="Location"
           /><br/>
-          </div>
-          <progress value="0" max="100" id="progressBar"></progress>
-        <input type="file" value="upload" id="filebutton"/>
-        <button type="submit">
-        <button disabled={isInvalid} type="submit">
+        <br/>
+        <button className = "btn-md" disabled={isInvalid} type="submit">
           Sign Up
         </button>
+        </div>
 
         { error && <p>{error.message}</p> }
-        </button>
+        
       </form>
+      </div>
     );
   }
 }
