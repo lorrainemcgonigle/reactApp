@@ -26,6 +26,7 @@ const NavigationAuth = () =>
 
 const NavigationNonAuth = () =>
   <ul className = "navbarOption">
+    <Link to={routes.LANDING}>Home Page</Link>
     <Link to={routes.SIGN_IN} id = "Link">Sign In</Link>
   </ul>
 

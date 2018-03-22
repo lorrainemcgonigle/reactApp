@@ -10,10 +10,12 @@ import PasswordChangeForm from './PasswordChange';
 import withAuthorisation from './withAuthorisation';
 
 const AccountPage = (props, { authUser }) =>
-  <div>
-    <h1>Account: {authUser.email}</h1>
-    <PasswordForgetForm />
-    <PasswordChangeForm />
+  <div className = "formWrap">
+    <h1>Welcome Back {authUser.email}</h1>
+    <div>
+    <PasswordForgetForm /><br/>
+    <PasswordChangeForm /><br/>
+    </div>
   </div>
 
 AccountPage.contextTypes = {
