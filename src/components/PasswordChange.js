@@ -52,12 +52,14 @@ class PasswordChangeForm extends Component {
           type="password"
           placeholder="New Password"
         /><br/>
+        <br/>
         <input
           value={passwordTwo}
           onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))}
           type="password"
           placeholder="Confirm New Password"
-        /><br/><br/>
+        /><br/>
+        <br/>
         <button className = "btn" disabled={isInvalid} type="submit">
           Reset My Password
         </button>

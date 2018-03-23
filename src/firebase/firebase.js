@@ -18,8 +18,11 @@ import * as firebase from 'firebase';//import the firebase object from the packa
 const db = firebase.database();
 //initialise the auth object and export it
 const auth = firebase.auth();
+//initialise the storage auth and export it
+const storage = firebase.storage().ref();
 
 export {
 	db,
   auth,
+  storage,
 };

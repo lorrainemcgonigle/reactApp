@@ -18,8 +18,10 @@ import {
   withRouter,
 } from 'react-router-dom';
 
-import { auth, db } from '../firebase';
+import { auth, db} from '../firebase';
 import * as routes from '../constants/routes';
+import firebase from 'firebase';
+import FileUploader from 'react-firebase-file-uploader';
 
 const SignUpPage = ({ history }) =>
   <div>
@@ -33,6 +35,10 @@ const INITIAL_STATE = {
   passwordOne: '',
   passwordTwo: '',
   Location: '',
+      avatar: '',
+    isUploading: false,
+    progress: 0,
+    avatarURL: '',
   error: null,
 };
 
@@ -53,6 +59,7 @@ class SignUpForm extends Component {
       email,
       passwordOne,
       Location,
+      avatarURL,
     } = this.state;
         const {
       history,
@@ -61,7 +68,7 @@ class SignUpForm extends Component {
     auth.doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
                 // Create a user in your own accessible Firebase Database too
-        db.doCreateUser(authUser.uid, username, email, Location)
+        db.doCreateUser(authUser.uid, username, email, Location, avatarURL)
           .then(() => {
             this.setState(() => ({ ...INITIAL_STATE }));
             history.push(routes.HOME);
@@ -77,6 +84,19 @@ class SignUpForm extends Component {
     event.preventDefault();
 
   }
+   handleChangeUsername = (event) => this.setState({username: event.target.value});
+  handleUploadStart = () => this.setState({isUploading: true, progress: 0});
+  handleProgress = (progress) => this.setState({progress});
+  handleUploadError = (error) => {
+    this.setState({isUploading: false});
+    console.error(error);
+  }
+  handleUploadSuccess = (filename) => {
+    this.setState({avatar: filename, progress: 100, isUploading: false});
+    firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({avatarURL: url}));
+  };
+ 
+
 
   render() {
     const {
@@ -93,6 +113,7 @@ class SignUpForm extends Component {
       email === '' ||
       Location === '' ||
       username === '';
+
     return (
     <div className = "formWrap">
       <form className = "signUpForm" onSubmit={this.onSubmit}>
@@ -133,8 +154,26 @@ class SignUpForm extends Component {
           type="text"
           placeholder="Location"
           /><br/>
+                    <label>Profile Picture:</label>
+          {this.state.isUploading &&
+            <p>Progress: {this.state.progress}</p>
+          }
+          {this.state.avatarURL &&
+            <img src={this.state.avatarURL} />
+          }
+          <FileUploader
+            accept="image/*"
+            name="avatar"
+            randomizeFilename
+            storageRef={firebase.storage().ref('images')}
+            onUploadStart={this.handleUploadStart}
+            onUploadError={this.handleUploadError}
+            onUploadSuccess={this.handleUploadSuccess}
+            onProgress={this.handleProgress}
+          />
+
         <br/>
-        <button className = "btn" disabled={isInvalid} type="submit">
+        <button className = "btn-md" disabled={isInvalid} type="submit">
           Sign Up
         </button>
         </div>

@@ -37,6 +37,10 @@ const UserList = ({ users }) =>
     {Object.keys(users).map(key =>
       <div key={key}>{users[key].username}</div>
     )}
+    <div>
+    <h2>User Photos</h2>
+  </div>
+    
   </div>
 
 const authCondition = (authUser) => !!authUser;

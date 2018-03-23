@@ -45,7 +45,7 @@ h1{
 	height: auto;
 	
 }
-div.signUpFormDetails, div.signInFormDetails{
+div.signUpFormDetails, .signInFormDetails{
 	margin: 30px;
 	margin-top: 10px;
 	padding: 15px;
